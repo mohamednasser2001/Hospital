@@ -1,0 +1,53 @@
+﻿<h1>Complete Appointment with @Model.Name</h1>
+<form id="appointmentForm">
+    <div class="mb-3 required">
+        <label for="patientName" class="form-label">Patient Name</label>
+        <input type="text" class="form-control" id="patientName" required>
+    </div>
+    <div class="mb-3 required">
+        <label for="appointmentDate" class="form-label">Appointment Date</label>
+        <input type="date" class="form-control" id="appointmentDate" required>
+    </div>
+    <div class="mb-3 required">
+        <label for="appointmentTime" class="form-label">Appointment Time</label>
+        <input type="time" class="form-control" id="appointmentTime" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Complete Appointment</button>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Appointment Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Your appointment has been successfully booked.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (jQuery and Popper) -->
+
+
+<script>
+    // Prevent default form submission and show modal instead
+    document.getElementById('appointmentForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Check if form is valid
+        if (this.checkValidity()) {
+            // Show modal on form submit
+            var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+            confirmationModal.show();
+        }
+    });
+</script>
+
